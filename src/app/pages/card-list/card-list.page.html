@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Choose your Spell</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true"
+             padding
+             text-center>
+  <div text-center>
+    <img *ngFor="let item of cards; let i = index"
+         class="cardImage"
+         src="{{item.image_uris.normal}}">
+  </div>
+</ion-content>

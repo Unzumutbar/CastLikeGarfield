@@ -1,0 +1,205 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"
+             padding>
+  <div class="ion-text-right cmcContainer">
+    <ion-icon *ngFor="let item of manaCost; let i = index"
+              src="{{item.Icon}}"
+              class="manaIcon"
+              (click)="removeMana(item)"></ion-icon>
+  </div>
+  <div class="inputContainer">
+    <ion-grid class="inputGrid">
+      <ion-row>
+        <ion-col>
+          <ion-icon src="assets/mana/colorless/md-mana-1.svg"
+                    class="manaButton"
+                    (click)="addGenericMana()">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/mono/md-mana-w.svg"
+                    class="manaButton"
+                    (click)="addMana('white')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/mono/md-mana-u.svg"
+                    class="manaButton"
+                    (click)="addMana('blue')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/mono/md-mana-b.svg"
+                    class="manaButton"
+                    (click)="addMana('black')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/mono/md-mana-r.svg"
+                    class="manaButton"
+                    (click)="addMana('red')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/mono/md-mana-g.svg"
+                    class="manaButton"
+                    (click)="addMana('green')">
+          </ion-icon>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-icon src="assets/mana/colorless/md-mana-c.svg"
+                    class="manaButton"
+                    (click)="addMana('colorless')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/hybrid/md-mana-wu.svg"
+                    class="manaButton"
+                    (click)="addMana('white-blue')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/hybrid/md-mana-ub.svg"
+                    class="manaButton"
+                    (click)="addMana('blue-black')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/hybrid/md-mana-br.svg"
+                    class="manaButton"
+                    (click)="addMana('black-red')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/hybrid/md-mana-rg.svg"
+                    class="manaButton"
+                    (click)="addMana('red-green')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/hybrid/md-mana-gw.svg"
+                    class="manaButton"
+                    (click)="addMana('green-white')">
+          </ion-icon>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-icon src="assets/mana/colorless/md-mana-cx.svg"
+                    class="manaButton"
+                    (click)="addXMana()">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/hybrid/md-mana-wb.svg"
+                    class="manaButton"
+                    (click)="addMana('white-black')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/hybrid/md-mana-ur.svg"
+                    class="manaButton"
+                    (click)="addMana('blue-red')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/hybrid/md-mana-bg.svg"
+                    class="manaButton"
+                    (click)="addMana('black-green')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/hybrid/md-mana-rw.svg"
+                    class="manaButton"
+                    (click)="addMana('red-white')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/hybrid/md-mana-gu.svg"
+                    class="manaButton"
+                    (click)="addMana('green-blue')">
+          </ion-icon>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-icon src="assets/mana/colorless/md-mana-cs.svg"
+                    class="manaButton"
+                    (click)="addMana('snow')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/phyrexian/md-mana-wp.svg"
+                    class="manaButton"
+                    (click)="addMana('white-phyrexian')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/phyrexian/md-mana-up.svg"
+                    class="manaButton"
+                    (click)="addMana('blue-phyrexian')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/phyrexian/md-mana-bp.svg"
+                    class="manaButton"
+                    (click)="addMana('black-phyrexian')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/phyrexian/md-mana-rp.svg"
+                    class="manaButton"
+                    (click)="addMana('red-phyrexian')">
+          </ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-icon src="assets/mana/phyrexian/md-mana-gp.svg"
+                    class="manaButton"
+                    (click)="addMana('green-phyrexian')">
+          </ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="getCards()"
+                      class="searchButton"
+                      size="large"
+                      expand="block">
+            <ion-icon slot="start"
+                      src="assets/planeswalker.svg">
+            </ion-icon>
+            Find your Spell
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="getRandomCard()"
+                      class="searchButton"
+                      expand="block"
+                      size="large"
+                      color="warning">
+            <ion-icon slot="start"
+                      src="assets/chaos.svg">
+            </ion-icon>
+            I'm feeling lucky
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

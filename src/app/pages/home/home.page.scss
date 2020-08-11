@@ -1,0 +1,60 @@
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+$manaSize: 7vw;
+$borderRadius: 2vh;
+
+.manaIcon {
+  font-size: $manaSize;
+  margin: 1vh 5px;
+}
+
+.manaButton {
+  font-size: $manaSize;
+}
+
+.inputGrid {
+  --ion-grid-column-padding: 2vh;
+}
+
+.cmcContainer {
+  min-height: 8vh;
+  background-color: lightgray;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  margin: 1vh 1vw;
+  border-radius: $borderRadius;
+  vertical-align: middle;
+}
+
+.inputContainer {
+  margin: 1vh 1vw;
+  border-color: lightgray;
+  border-radius: $borderRadius;
+  border: 0.5vh solid lightgray;
+}
