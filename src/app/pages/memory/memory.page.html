@@ -1,8 +1,13 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Choose your Spell</ion-title>
+    <ion-title>Garfield's Memory</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="danger"
+                  fill="solid"
+                  (click)="onTraumatize()">Traumatize</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -15,8 +20,7 @@
       <div>
         <img *ngFor="let item of cards; let i = index"
              class="cardImage"
-             src="{{item.image_uris.normal}}"
-             (click)="castSpell(item)">
+             src="{{item.image_uris.normal}}">
       </div>
     </ion-row>
   </ion-grid>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { manaIcons, IMana } from '../../../models/Mana';
 import { ScryfallService } from '../../services/scryfall.service';
 import { Router, NavigationExtras } from '@angular/router';
+import { IMana, manaIcons } from 'src/app/shared/models';
 
 @Component({
   selector: 'app-home',

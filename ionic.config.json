@@ -1,5 +1,7 @@
 {
   "name": "CastLikeGarfield",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

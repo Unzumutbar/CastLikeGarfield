@@ -6,8 +6,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { IMana } from 'src/models/Mana';
-import { ICard, ICardList } from 'src/models/ScryfallApi';
+import { IMana, ICardList, ICard } from '../shared/models';
 
 @Injectable({
   providedIn: 'root',

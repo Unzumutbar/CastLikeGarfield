@@ -1,3 +1,63 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu type="overlay"
+            contentId="cast-like-garfield">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Navigation</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+
+        <!-- Build Menu Items -->
+        <div *ngFor="let p of appPages">
+
+          <!-- Toggle Menu Item -->
+          <ion-item *ngIf="p.url.length === 0"
+                    (click)="p.isToggleOpen === 0 ? p.isToggleOpen = 1 : p.isToggleOpen = 0">
+            <ion-icon slot="start"
+                      [name]="p.icon"></ion-icon>
+            <ion-label>
+              {{p.title}}
+            </ion-label>
+          </ion-item>
+
+          <!-- Navigation Menu Item -->
+          <ion-menu-toggle *ngIf="p.url.length > 0">
+            <ion-item [routerLink]="[p.url]"
+                      (click)="onCloseToggleItems()">
+              <ion-icon slot="start"
+                        [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- Show Subitems of Menu Item -->
+          <div *ngIf="p.isToggleOpen === 1">
+            <!-- Create Menu Items with left margin to indicate subItem nature -->
+            <div *ngFor="let sp of p.subPages"
+                 style="margin-left: 25px;">
+
+              <!-- Navigation Menu Item -->
+              <ion-menu-toggle>
+                <ion-item [routerLink]="[sp.url]"
+                          (click)="onCloseToggleItems()">
+                  <ion-icon slot="start"
+                            [name]="sp.icon"></ion-icon>
+                  <ion-label>
+                    {{sp.title}}
+                  </ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+
+            </div>
+          </div>
+        </div>
+
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="cast-like-garfield"></ion-router-outlet>
 </ion-app>

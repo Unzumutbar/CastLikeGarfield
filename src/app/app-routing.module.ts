@@ -26,6 +26,17 @@ const routes: Routes = [
         (m) => m.RandomCardPageModule
       ),
   },
+  {
+    path: 'cast-spell-dialog',
+    loadChildren: () =>
+      import('./dialogs/cast-spell-dialog/cast-spell-dialog.module').then(
+        (m) => m.CastSpellDialogPageModule
+      ),
+  },  {
+    path: 'memory',
+    loadChildren: () => import('./pages/memory/memory.module').then( m => m.MemoryPageModule)
+  },
+
 ];
 
 @NgModule({

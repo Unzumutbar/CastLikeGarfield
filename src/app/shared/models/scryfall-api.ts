@@ -74,7 +74,7 @@ export interface CardFace {
 
 export interface ICard {
   // object: string;
-  // id: string;
+  id: string;
   // oracle_id: string;
   // multiverse_ids: number[];
   // tcgplayer_id: number;
@@ -162,6 +162,7 @@ export class CardList implements CardList {
 }
 
 export class Card implements ICard {
+  public id: string;
   public name = '';
   public lang = '';
   public image_uris = new ImageUri();
