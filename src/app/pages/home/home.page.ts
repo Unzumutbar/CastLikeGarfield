@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ScryfallService } from '../../services/scryfall.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { IMana, manaIcons } from 'src/app/shared/models';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +31,11 @@ export class HomePage {
     });
   }
 
-  constructor(public scryfall: ScryfallService, public router: Router) {
+  constructor(
+    public scryfall: ScryfallService,
+    public router: Router,
+    private notify: NotificationService
+  ) {
     this._manaCost = [];
     this.checkManaCost();
     this._genericManaList = this.getGenericManaList();
@@ -142,30 +147,50 @@ export class HomePage {
     return this._xManaList.includes(mana);
   }
 
-  public getCards() {
-    this.scryfall.getCardsByCost(this.manaCost).subscribe((cardList) => {
-      if (cardList) {
+  public async getCards() {
+    if (this.manaCost.length <= 0) {
+      return;
+    }
+
+    const spinner = await this.notify.showSpinnerLoadingData();
+    try {
+      const cardList = await this.scryfall.getCardsByCost(this.manaCost);
+      if (cardList !== null) {
         let navigationExtras: NavigationExtras = {
           state: {
             cardList: cardList,
           },
         };
         this.router.navigate(['card-list'], navigationExtras);
+      } else {
+        await this.notify.showError('No spells were found');
       }
-    });
+    } finally {
+      spinner.hide();
+    }
   }
 
-  public getRandomCard() {
-    this.scryfall.getRandomCardByCost(this.manaCost).subscribe((card) => {
-      if (card) {
+  public async getRandomCard() {
+    if (this.manaCost.length <= 0) {
+      return;
+    }
+
+    const spinner = await this.notify.showSpinnerLoadingData();
+    try {
+      const card = await this.scryfall.getRandomCardByCost(this.manaCost);
+      if (card !== null) {
         let navigationExtras: NavigationExtras = {
           state: {
             card: card,
           },
         };
         this.router.navigate(['random-card'], navigationExtras);
+      } else {
+        await this.notify.showError('No spells were found');
       }
-    });
+    } finally {
+      spinner.hide();
+    }
   }
 
   public getGenericManaList(): IMana[] {

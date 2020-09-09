@@ -6,7 +6,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { IMana, ICardList, ICard } from '../shared/models';
+import { IMana, ICardList, ICard, Card } from '../shared/models';
 
 @Injectable({
   providedIn: 'root',
@@ -53,17 +53,27 @@ export class ScryfallService {
     return filter;
   }
 
-  public getCardsByCost(cost: IMana[]): Observable<ICardList> {
+  public getCardsByCost(cost: IMana[]): Promise<ICardList> {
     const filter = this.createSearchFilterFromCost(cost);
     return this.http
       .get<ICardList>(this.base_path + '/cards/search?q=' + filter)
-      .pipe(retry(2), catchError(this.handleError));
+      .toPromise()
+      .catch((error) => {
+        return null;
+      });
   }
 
-  public getRandomCardByCost(cost: IMana[]): Observable<ICard> {
+  public getNextPage(nexPage: string): Promise<ICardList> {
+    return this.http.get<ICardList>(nexPage).toPromise();
+  }
+
+  public getRandomCardByCost(cost: IMana[]): Promise<ICard> {
     const filter = this.createSearchFilterFromCost(cost);
     return this.http
       .get<ICard>(this.base_path + '/cards/random?q=' + filter)
-      .pipe(retry(2), catchError(this.handleError));
+      .toPromise()
+      .catch((error) => {
+        return null;
+      });
   }
 }
